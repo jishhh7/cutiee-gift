@@ -8,9 +8,10 @@ body {
   font-family: 'Segoe UI', sans-serif;
   height: 100vh;
   overflow: hidden;
-  position: relative
+  position: relative;
 }
 
+/* Hidden at first */
 .background {
   position: fixed;
   top: 0;
@@ -19,17 +20,16 @@ body {
   height: 100vh;
   background: url('pop.jpg') no-repeat center center;
   background-size: cover;
-  z-index: 0;          /* keep it below everything else */
+  z-index: 0;
   opacity: 0;
+  filter: blur(8px);
   transition: opacity 1s ease-in-out;
-  filter: blur(15px);
 }
 
-/* When envelope opens, background fades in */
-.envelope.open ~ .background {
+/* Show background when envelope opened */
+body.opened .background {
   opacity: 1;
 }
-
 
 .envelope {
   position: relative;
@@ -86,6 +86,4 @@ body {
   pointer-events: auto;
 }
 
-.envelope.open ~ .background {
-  opacity: 1;
-}
+ 
