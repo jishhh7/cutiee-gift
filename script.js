@@ -5,6 +5,8 @@ function openEnvelope() {
     document.body.classList.add('opened');
 
     const music = document.getElementById('bg-music');
-    if (music) music.play().catch(() => {});
+    if (music) music.play().catch(() => {
+      console.log("Music couldn't play automatically due to browser restrictions.");
+    });
   }
 }
