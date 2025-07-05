@@ -1,77 +1,75 @@
-body {
+* {
   margin: 0;
   padding: 0;
-  height: 100vh;
-  background: url('pop.jpg') no-repeat center center fixed;
-  background-size: cover;
-  backdrop-filter: blur(15px);
-  transition: backdrop-filter 1s ease-in-out;
+  box-sizing: border-box;
 }
 
-.envelope.open ~ body {
-  backdrop-filter: blur(8px);
+body, html {
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
 }
 
-/* Hidden background image */
-.background-blur {
+/* Hidden background */
+.background {
   position: fixed;
-  align-items: center;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('pop.jpg') center center / cover no-repeat;
-  bavkground-size: cover;
-  filter: blur(20px) brightness(0.5);
-  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('pop.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(10px);
   opacity: 0;
+  z-index: 0;
   transition: opacity 1s ease-in-out;
 }
 
-/* Envelope */
+body.opened .background {
+  opacity: 1;
+}
+
+/* ENVELOPE fills screen */
 .envelope {
-  .envelope {
-  position: relative;
-  width: 400px;
-  height: 280px;
-  background: #fff0f5;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  border-radius: 14px;
-  cursor: pointer;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fce4ec;
   overflow: hidden;
   z-index: 1;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  cursor: pointer;
 }
 
-}
-
+/* Bigger, wider flap */
 .flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 400px;
-  height: 140px;
+  width: 100%;
+  height: 250px;
   background: #ff69b4;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  transition: transform 1s ease-in-out;
   z-index: 2;
 }
 
+/* Message Letter */
 .letter {
-  position: absolute;
-  top: 220px;
+  flex-grow: 1;
   width: 100%;
-  height: calc(100% - 220px);
+  max-width: 600px;
   transform: translateY(100%);
-  transition: transform 1s ease-in-out;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: start;
-  overflow: hidden;
-  padding: 0 10px;
-  box-sizing: border-box;
-  opacity: 0;
-  pointer-events: none;
+  z-index: 3;
 }
 
 .envelope.open .letter {
@@ -79,28 +77,15 @@ body {
   opacity: 1;
   pointer-events: auto;
 }
+
 .letter .content {
-  background: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  max-width: 370px;
-  height: 100%;
-  padding: 16px;
-  margin: auto;
-  border-radius: 12px;
-  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.65);
   color: white;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  padding: 25px;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
   text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
-
-
-.message {
-  color: white;
-  font-size: 14px;
-  line-height: 1.6;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-}
-{margin: 0;
-  padding: 0;
-  background: url('pop.jpg') no-repeat center center fixed;
-  background-size: cover;
-  backdrop-filter: blur(8px);}
