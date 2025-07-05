@@ -1,55 +1,51 @@
-* {
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body, html {
-  height: 100%;
-  overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
-  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #ffebf0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Background image — hidden at start */
-.background {
+/* Hidden background image */
+.background-blur {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('pop.jpg'); /* Make sure this matches file name exactly */
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  z-index: 0;
+  background: url('pop.jpg') center center / cover no-repeat;
+  filter: blur(20px) brightness(0.5);
+  z-index: -1;
   opacity: 0;
-  filter: blur(10px);
   transition: opacity 1s ease-in-out;
 }
 
-/* Fade in when envelope is opened */
-body.opened .background {
-  opacity: 1;
-}
-
-/* Envelope base */
+/* Envelope */
 .envelope {
+  .envelope {
   position: relative;
-  width: 100%;
-  height: 100vh;
-  background-color: #fce4ec;
+  width: 400px;
+  height: 280px;
+  background: #fff0f5;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  border-radius: 14px;
+  cursor: pointer;
   overflow: hidden;
   z-index: 1;
-  cursor: pointer;
+  margin: auto;
+}
+
 }
 
 .flap {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 220px;
+  width: 400px;
+  height: 140px;
   background: #ff69b4;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transition: transform 1s ease-in-out;
@@ -58,33 +54,28 @@ body.opened .background {
 
 .letter {
   position: absolute;
-  top: 220px;
+  top: 140px;
   width: 100%;
-  height: calc(100% - 220px);
+  height: calc(100% - 140px);
+  background: transparent;
+  padding: 10px;
+  box-sizing: border-box;
   transform: translateY(100%);
-  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  padding: 20px;
-  opacity: 0;
-  pointer-events: none;
+  transition: transform 1s ease-in-out;
+  overflow-y: auto;
 }
 
 .letter .content {
   background: rgba(0, 0, 0, 0.6);
-  color: white;
-  width: 100%;
-  max-width: 400px;
-  height: 100%;
-  border-radius: 12px;
-  padding: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  max-height: 100%;
   overflow-y: auto;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
 
-.envelope.open .letter {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
+.message {
+  color: white;
+  font-size: 14px;
+  line-height: 1.6;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
