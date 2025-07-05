@@ -1,12 +1,15 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  padding: 0;
   height: 100vh;
-  overflow: hidden;
-  background-color: #ffebf0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: url('pop.jpg') no-repeat center center fixed;
+  background-size: cover;
+  backdrop-filter: blur(15px);
+  transition: backdrop-filter 1s ease-in-out;
+}
+
+.envelope.open ~ body {
+  backdrop-filter: blur(8px);
 }
 
 /* Hidden background image */
@@ -15,9 +18,10 @@ body {
   align-items: center;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: url('pop.jpg') center center / cover no-repeat;
+  bavkground-size: cover;
   filter: blur(20px) brightness(0.5);
   z-index: -1;
   opacity: 0;
@@ -55,24 +59,39 @@ body {
 
 .letter {
   position: absolute;
-  top: 140px;
+  top: 220px;
   width: 100%;
-  height: calc(100% - 140px);
-  background: transparent;
-  padding: 10px;
-  box-sizing: border-box;
+  height: calc(100% - 220px);
   transform: translateY(100%);
   transition: transform 1s ease-in-out;
-  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  overflow: hidden;
+  padding: 0 10px;
+  box-sizing: border-box;
+  opacity: 0;
+  pointer-events: none;
 }
 
+.envelope.open .letter {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
 .letter .content {
   background: rgba(0, 0, 0, 0.6);
-  padding: 10px;
-  border-radius: 10px;
-  max-height: 100%;
+  width: 100%;
+  max-width: 370px;
+  height: 100%;
+  padding: 16px;
+  margin: auto;
+  border-radius: 12px;
   overflow-y: auto;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
+
 
 .message {
   color: white;
