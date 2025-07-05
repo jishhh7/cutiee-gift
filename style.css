@@ -10,26 +10,27 @@ body {
   overflow: hidden;
   position: relative;
 }
-
-/* Hidden at first */
 .background {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  background: url('pop.jpg') no-repeat center center;
+  background-image: url('pop.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
   z-index: 0;
   opacity: 0;
-  filter: blur(8px);
+  filter: blur(10px);
   transition: opacity 1s ease-in-out;
 }
 
-/* Show background when envelope opened */
 body.opened .background {
   opacity: 1;
 }
+
+
 
 .envelope {
   position: relative;
