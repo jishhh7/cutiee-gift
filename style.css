@@ -4,19 +4,21 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  height: 100vh;
+body, html {
+  height: 100%;
   overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
   position: relative;
 }
+
+/* Background image — hidden at start */
 .background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('pop.jpg');
+  background-image: url('pop.jpg'); /* Make sure this matches file name exactly */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -26,12 +28,12 @@ body {
   transition: opacity 1s ease-in-out;
 }
 
+/* Fade in when envelope is opened */
 body.opened .background {
   opacity: 1;
 }
 
-
-
+/* Envelope base */
 .envelope {
   position: relative;
   width: 100%;
@@ -86,5 +88,3 @@ body.opened .background {
   opacity: 1;
   pointer-events: auto;
 }
-
- 
