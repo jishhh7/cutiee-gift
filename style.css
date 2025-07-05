@@ -12,6 +12,7 @@ body {
 /* Hidden background image */
 .background-blur {
   position: fixed;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100vw;
@@ -79,3 +80,8 @@ body {
   line-height: 1.6;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
+{margin: 0;
+  padding: 0;
+  background: url('pop.jpg') no-repeat center center fixed;
+  background-size: cover;
+  backdrop-filter: blur(8px);}
